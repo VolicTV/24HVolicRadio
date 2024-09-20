@@ -42,9 +42,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>24/7 Old Music Radio</h1>
+        <h1>24 Hour Volic Radio</h1>
       </header>
-      <main>
+      <main className="player-container">
         <NowPlaying track={currentTrack} />
         <Player 
           isPlaying={isPlaying} 
