@@ -54,6 +54,34 @@
 ```
 ## Setup and Installation
 
+### Prerequisites
+
+- Java 17
+- Gradle
+- Azure CLI
+- Azure Functions Core Tools
+- Azurite
+- Node.js and npm
+
+
+### Automated Dependency Installation
+
+For your convenience, we've included scripts to automatically install all required dependencies:
+
+- On Windows: Run `installDependencies.bat` as administrator (will prompt for admin if ran without admin)
+- On Linux/macOS: Run `./installDependencies.sh` with sudo privileges
+
+These scripts will install all necessary tools and packages, including:
+
+- Node.js and npm
+- Java 17
+- Gradle
+- Azure CLI
+- Azure Functions Core Tools
+- Azurite
+
+If you prefer to install dependencies manually, please ensure you have all the above prerequisites installed before proceeding with the setup.
+
 ### Backend
 
 1. Ensure you have Java 11 and Gradle installed.
