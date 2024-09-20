@@ -5,11 +5,12 @@ import com.azure.storage.blob.BlobServiceClientBuilder;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 import com.azure.core.credential.TokenCredential;
 import com.azure.resourcemanager.AzureResourceManager;
-import com.azure.resourcemanager.mediaservices.models.MediaServicesAccount;
-
+import com.azure.resourcemanager.mediaservices.MediaServicesManager;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import com.azure.core.management.AzureEnvironment;
+import com.azure.core.management.profile.AzureProfile;
 
 @Configuration
 public class AzureConfig {
@@ -41,15 +42,13 @@ public class AzureConfig {
     @Bean
     public AzureResourceManager azureResourceManager(TokenCredential credential) {
         return AzureResourceManager
-                .authenticate(credential)
+                .authenticate(credential, new AzureProfile(AzureEnvironment.AZURE))
                 .withSubscription(subscriptionId);
     }
 
     @Bean
-    public MediaServicesAccount mediaServicesAccount(AzureResourceManager azureResourceManager) {
-        return azureResourceManager.mediaServices().manager()
-                .serviceClient()
-                .getMediaServices()
-                .getByResourceGroup(resourceGroup, accountName);
+    public MediaServicesManager mediaServicesManager(TokenCredential credential) {
+        return MediaServicesManager
+                .authenticate(credential, new AzureProfile(AzureEnvironment.AZURE));
     }
 }

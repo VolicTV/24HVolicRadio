@@ -18,7 +18,10 @@ dependencies {
     implementation 'com.microsoft.azure.functions:azure-functions-java-library:1.4.2'
     implementation 'com.azure:azure-storage-blob:12.14.0'
     implementation 'com.azure:azure-identity:1.3.3'
-    implementation 'com.azure.resourcemanager:azure-resourcemanager-mediaservices:1.0.0'
+    implementation 'com.google.api-client:google-api-client:1.31.1'
+    implementation 'com.google.apis:google-api-services-youtube:v3-rev222-1.25.0'
+    implementation 'com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.3.0'
+    implementation 'com.azure.resourcemanager:azure-resourcemanager:2.3.0'
     
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

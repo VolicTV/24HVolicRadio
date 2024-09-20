@@ -1,17 +1,24 @@
 package com.radiostation.services;
 
-import com.azure.resourcemanager.mediaservices.models.MediaServicesAccount;
+import com.azure.resourcemanager.mediaservices.MediaServicesManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class StreamService {
 
-    private final MediaServicesAccount mediaServicesAccount;
+    private final MediaServicesManager mediaServicesManager;
+    private final String resourceGroup;
+    private final String accountName;
 
     @Autowired
-    public StreamService(MediaServicesAccount mediaServicesAccount) {
-        this.mediaServicesAccount = mediaServicesAccount;
+    public StreamService(MediaServicesManager mediaServicesManager,
+                         @Value("${azure.media-services.resource-group}") String resourceGroup,
+                         @Value("${azure.media-services.account-name}") String accountName) {
+        this.mediaServicesManager = mediaServicesManager;
+        this.resourceGroup = resourceGroup;
+        this.accountName = accountName;
     }
 
     public String getCurrentStreamUrl() {

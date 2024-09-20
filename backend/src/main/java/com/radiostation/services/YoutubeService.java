@@ -1,12 +1,12 @@
 package com.radiostation.services;
 
+import com.radiostation.models.Track;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.SearchResult;
-import com.radiostation.models.Track;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.util.List;
@@ -49,11 +49,16 @@ public class YoutubeService {
         String videoId = searchResult.getId().getVideoId();
         String title = searchResult.getSnippet().getTitle();
         String artist = searchResult.getSnippet().getChannelTitle();
-
+    
         return new Track(
-                videoId,
-                title,
-                artist,
-                "", // album not available from
+            videoId,
+            title,
+            artist,
+            "", // album not available
+            0,  // year not available
+            Duration.ZERO, // duration not available
+            "https://www.youtube.com/watch?v=" + videoId, // file URL
+            "YouTube" // source type
+        );
     }
 }

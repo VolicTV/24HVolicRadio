@@ -32,7 +32,7 @@
 | | | | |-- /models
 | | | | |-- /config
 | | | |-- /resources
-| |-- pom.xml
+| |-- build.gradle
 |-- /frontend
 | |-- /public
 | |-- /src
@@ -45,16 +45,21 @@
 | |-- host.json
 | |-- /RadioStationFunction
 |-- README.md
+|-- gradlew
+|-- gradlew.bat
+|-- /gradle
+| |-- /wrapper
+| | |-- gradle-wrapper.jar
+| | |-- gradle-wrapper.properties
 ```
 ## Setup and Installation
 
 ### Backend
 
 1. Ensure you have Java 11 and Gradle installed.
-2. Navigate to the `backend` directory.
-3. Run `./gradlew build` to build the project.
-4. Set up your Azure account and configure Azure Functions.
-5. Deploy the backend to Azure Functions using `./gradlew azureFunctionsDeploy`.
+2. Run `./gradlew build` or `./gradlew.bat build` if on windows to build the project.
+3. Set up your Azure account and configure Azure Functions.
+4. Deploy the backend to Azure Functions using `./gradlew azureFunctionsDeploy`.
 
 ### Frontend
 
