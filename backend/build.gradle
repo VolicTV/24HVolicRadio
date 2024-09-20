@@ -3,12 +3,16 @@ plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'com.microsoft.azure.azurefunctions' version '1.8.0'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group = 'com.volicradio'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
+configurations {
+    azureRuntime
+}
 repositories {
     mavenCentral()
 }
@@ -16,6 +20,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'com.microsoft.azure.functions:azure-functions-java-library:1.4.2'
+    azureRuntime 'com.microsoft.azure.functions:azure-functions-java-library:1.4.2'
     implementation 'com.azure:azure-storage-blob:12.14.0'
     implementation 'com.azure:azure-identity:1.3.3'
     implementation 'com.google.api-client:google-api-client:1.31.1'
@@ -24,6 +29,18 @@ dependencies {
     implementation 'com.azure.resourcemanager:azure-resourcemanager:2.3.0'
     
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+task runLocal(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.radiostation.RadioStationApplication'
+    args = ['--spring.profiles.active=local']
+}
+
+task deployToAzure(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.radiostation.RadioStationApplication'
+    args = ['--spring.profiles.active=azure']
 }
 
 test {

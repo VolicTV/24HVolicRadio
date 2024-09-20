@@ -1,5 +1,6 @@
 package com.radiostation;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -8,7 +9,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.task.AsyncTaskExecutor;
-
+import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 @EnableScheduling
 @EnableAsync
@@ -19,17 +20,13 @@ public class RadioStationApplication {
         SpringApplication.run(RadioStationApplication.class, args);
     }
 
-    // You can add additional configuration beans here if needed
-    // For example:
-    /*
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            System.out.println("Radio Station Application is starting...");
-            // You can add any startup logic here
+            String[] activeProfiles = ctx.getEnvironment().getActiveProfiles();
+        System.out.println("Active profiles: " + String.join(", ", activeProfiles));
         };
     }
-    */
 
     @Bean
     public AsyncTaskExecutor taskExecutor() {

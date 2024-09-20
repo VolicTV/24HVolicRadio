@@ -84,11 +84,47 @@ If you prefer to install dependencies manually, please ensure you have all the a
 
 ### Backend
 
-1. Ensure you have Java 11 and Gradle installed.
-2. Run `./gradlew build` or `./gradlew.bat build` if on windows to build the project.
-3. Set up your Azure account and configure Azure Functions.
-4. Deploy the backend to Azure Functions using `./gradlew azureFunctionsDeploy`.
+1. Ensure you have Java 17 and Gradle installed.
+2. Configure your local and Azure settings:
+   - For local development, update `backend/src/main/resources/application-local.properties` with your local settings.
+   - For Azure deployment, update `backend/src/main/resources/application-azure.properties` with your Azure settings.
+3. Build the project:
+   ```
+   ./gradlew build
+   ```
 
+### Running Locally
+
+To run the application locally:
+
+1. Run `./gradlew runLocal` to start the backend.
+
+This command will start the application using the local profile and configurations.
+
+### Deploying to Azure
+
+To deploy the application to Azure:
+
+1. Ensure you have set up your Azure account and have the necessary credentials.
+2. Update the Azure configuration in `build.gradle`:
+   ```gradle
+   azurefunctions {
+       resourceGroup = 'your-resource-group'
+       appName = '24-hour-volic-radio'
+       pricingTier = 'Consumption'
+       region = 'westus'
+       runtime {
+           os = 'java'
+           javaVersion = '17'
+       }
+   }
+   ```
+3. Run the deployment command:
+   ```
+   ./gradlew deployToAzure
+   ```
+
+This command will build and deploy your application to Azure using the Azure profile and configurations.
 ### Frontend
 
 1. Ensure you have Node.js and npm installed.
@@ -104,10 +140,16 @@ If you prefer to install dependencies manually, please ensure you have all the a
 
 After setting up both backend and frontend, you can:
 
-1. Open the web application in your browser.
-2. Press the play button to start streaming.
-3. Adjust volume as needed.
-4. View the currently playing track information.
+1. For local development:
+   - Start the backend using `./gradlew runLocal`
+   - Start the frontend using `npm start` in the `frontend` directory
+2. For Azure deployment:
+   - Deploy the backend using `./gradlew deployToAzure`
+   - Deploy the frontend to your chosen hosting service (e.g., Azure Static Web Apps)
+3. Open the web application in your browser.
+4. Press the play button to start streaming.
+5. Adjust volume as needed.
+6. View the currently playing track information.
 
 ## Contributing
 
