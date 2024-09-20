@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.volicradio'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '17'
 
 repositories {
     mavenCentral()
@@ -36,7 +36,7 @@ azurefunctions {
     pricingTier = 'Consumption'
     region = 'westus'
     runtime {
-        os = 'windows'
-        javaVersion = '11'
+        os = 'java'
+        javaVersion = '17'
     }
 }

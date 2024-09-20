@@ -14,7 +14,7 @@
 
 ## Technology Stack
 
-- Backend: Java 11, Azure Functions, Azure Media Services
+- Backend: Java 17, Azure Functions, Azure Media Services
 - Frontend: React.js, Axios
 - APIs: YouTube Data API
 - Cloud: Microsoft Azure (Serverless)
