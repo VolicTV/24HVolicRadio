@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.App-header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #61dafb;
+}
+
+.player-container {
+  background-color: #1e2127;
+  border-radius: 10px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.now-playing {
+  margin-bottom: 1rem;
+}
+
+.now-playing h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.now-playing p {
+  margin: 0.25rem 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #4fa8d5;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin: 0 1rem;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .player-container {
+    padding: 1rem;
+  }
+
+  input[type="range"] {
+    width: 150px;
+  }
+}
