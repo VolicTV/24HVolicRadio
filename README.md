@@ -20,7 +20,7 @@
 - Cloud: Microsoft Azure (Serverless)
 
 ## Project Structure
-
+```
 /24-hour-volic-radio
 |-- /backend
 | |-- /src
@@ -45,16 +45,16 @@
 | |-- host.json
 | |-- /RadioStationFunction
 |-- README.md
-
+```
 ## Setup and Installation
 
 ### Backend
 
-1. Ensure you have Java 11 and Maven installed.
+1. Ensure you have Java 11 and Gradle installed.
 2. Navigate to the `backend` directory.
-3. Run `mvn clean install` to build the project.
+3. Run `./gradlew build` to build the project.
 4. Set up your Azure account and configure Azure Functions.
-5. Deploy the backend to Azure Functions.
+5. Deploy the backend to Azure Functions using `./gradlew azureFunctionsDeploy`.
 
 ### Frontend
 
