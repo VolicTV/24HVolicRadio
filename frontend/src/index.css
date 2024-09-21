@@ -48,7 +48,25 @@ input, button {
   font-family: inherit;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4fa8d5;
+}
+
+@media (prefers-color-scheme: light) {
   body {
     background-color: #f0f2f5;
     color: #333333;

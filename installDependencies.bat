@@ -82,6 +82,24 @@ if %errorlevel% neq 0 (
     echo Azurite is already installed.
 )
 
+REM Install yt-dlp
+where yt-dlp >nul 2>nul
+if %errorlevel% neq 0 (
+    echo Installing yt-dlp...
+    choco install yt-dlp -y
+) else (
+    echo yt-dlp is already installed.
+)
+
+REM Install ffmpeg
+where ffmpeg >nul 2>nul
+if %errorlevel% neq 0 (
+    echo Installing ffmpeg...
+    choco install ffmpeg -y
+) else (
+    echo ffmpeg is already installed.
+)
+
 echo All dependencies have been installed or were already present.
 echo Please restart your command prompt to ensure all changes take effect.
 pause

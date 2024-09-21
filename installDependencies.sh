@@ -59,5 +59,22 @@ else
     echo "Azurite is already installed."
 fi
 
+# Install yt-dlp
+if ! command_exists yt-dlp; then
+    echo "Installing yt-dlp..."
+    sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+    sudo chmod a+rx /usr/local/bin/yt-dlp
+else
+    echo "yt-dlp is already installed."
+fi
+
+# Install ffmpeg
+if ! command_exists ffmpeg; then
+    echo "Installing ffmpeg..."
+    sudo apt-get install -y ffmpeg
+else
+    echo "ffmpeg is already installed."
+fi
+
 echo "All dependencies have been installed or were already present."
 echo "Please restart your terminal to ensure all changes take effect."

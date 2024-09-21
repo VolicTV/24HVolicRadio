@@ -27,6 +27,8 @@ dependencies {
     implementation 'com.google.apis:google-api-services-youtube:v3-rev222-1.25.0'
     implementation 'com.azure.resourcemanager:azure-resourcemanager-mediaservices:2.3.0'
     implementation 'com.azure.resourcemanager:azure-resourcemanager:2.3.0'
+    implementation 'com.google.apis:google-api-services-youtube:v3-rev222-1.25.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
     
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
