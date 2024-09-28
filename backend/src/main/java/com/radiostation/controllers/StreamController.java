@@ -6,15 +6,18 @@ import com.radiostation.models.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.HttpStatus;  // Add this line
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.net.MalformedURLException;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/api")
@@ -91,6 +94,17 @@ public class StreamController {
             }
         } catch (MalformedURLException e) {
             throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
+
+    @PostMapping("/upload")
+    public ResponseEntity<String> uploadAudio(@RequestParam("file") MultipartFile file) {
+        try {
+            String fileName = streamService.saveUploadedFile(file);
+            return ResponseEntity.ok("File uploaded successfully: " + fileName);
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to upload file: " + e.getMessage());
         }
     }
 

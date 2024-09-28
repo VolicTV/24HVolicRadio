@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { searchYoutube, processAudio } from '../services/api';
+import { searchYoutube, processAudio, uploadAudio } from '../services/api';
+import FileUpload from './FileUpload';
 
 const Player = ({ onTrackChange }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -76,9 +77,16 @@ const Player = ({ onTrackChange }) => {
     }
   };
 
+  const handleUploadSuccess = (response) => {
+    console.log('File uploaded:', response);
+    // We'll update this function later to refresh the playlist
+  };
+
   return (
     <div className="player">
       <audio ref={audioRef} src={currentTrack?.fileUrl} />
+      
+      <FileUpload onUploadSuccess={handleUploadSuccess} />
       
       <div className="search-container">
         <input

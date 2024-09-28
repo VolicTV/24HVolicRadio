@@ -39,6 +39,22 @@ export const processAudio = async (videoId) => {
   }
 };
 
+export const uploadAudio = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  try {
+    const response = await api.post('/api/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error uploading audio:', error);
+    throw error;
+  }
+};
+
 // Add more API calls as needed
 
 export default api;
